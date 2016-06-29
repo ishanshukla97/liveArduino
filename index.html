@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO</title>
+  </head>
+  <body>
+    <h3>Data</h3>
+    <canvas id="mycanvas" width="800" height="500"></canvas>
+
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="/smoothie.js"></script>
+    <script>
+      var socket = io();
+      var smoothie = new SmoothieChart();
+      var line = new TimeSeries();
+      smoothie.streamTo(document.getElementById("mycanvas"), 2000);
+
+      socket.on('dat', function(int_data){
+        console.log(int_data);
+        line.append(new Date().getTime(), int_data);
+        smoothie.addTimeSeries(line);
+      });
+      setInterval(function(){
+        console.log("sending request");
+        socket.emit("getData");
+      }, 2000);
+    </script>
+  </body>
+</html>
