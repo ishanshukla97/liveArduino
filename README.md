@@ -1,5 +1,5 @@
 # liveArduino
-This is a demo project, basicaly, to demonstrate how easy it is to create web apps with node.js.
+This is a demo project, basically, to demonstrate how easy it is to create web apps with node.js.
 
 # Why this repo exist in the first place?
 Initially I wanted to build a seismometer which would send data to an Arduino microcontroller. Through the serial COM port
